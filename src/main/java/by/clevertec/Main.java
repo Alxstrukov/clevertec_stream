@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -382,18 +383,27 @@ public class Main {
                         System.out.printf("%s=%.2f", stringDoubleEntry.getKey(), stringDoubleEntry.getValue()));
     }
 
-    public static void task21() {
+    public static HashMap<String, Long> task21() {
         List<Student> students = Util.getStudents();
+        HashMap<String, Long> numberOfStudentsInGroup = new HashMap<>();
         students.stream()
                 .collect(Collectors.groupingBy(Student::getGroup, Collectors.counting()))
-                .forEach((key, value) -> System.out.printf("%s = %s\n", key, value));
+                .forEach((key, value) -> {
+                    numberOfStudentsInGroup.put(key, value);
+                    System.out.printf("%s = %s\n", key, value);
+                });
+        return numberOfStudentsInGroup;
     }
 
-    public static void task22() {
+    public static HashMap<String, Integer> task22() {
         List<Student> students = Util.getStudents();
+        HashMap<String, Integer> minAgeTheFaculty = new HashMap<>();
         students.stream()
                 .collect(Collectors.groupingBy(Student::getFaculty, Collectors.minBy(Comparator.comparing(Student::getAge))))
-                .forEach((key, value) -> System.out.printf("%s = %s\n", key, value.get().getAge()));
-
+                .forEach((key, value) -> {
+                    minAgeTheFaculty.put(key, value.get().getAge());
+                    System.out.printf("%s = %s\n", key, value.get().getAge());
+                });
+        return minAgeTheFaculty;
     }
 }

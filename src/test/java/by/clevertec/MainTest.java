@@ -1,13 +1,13 @@
 package by.clevertec;
 
 import by.clevertec.model.Animal;
-import by.clevertec.util.Util;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
     @Test
@@ -33,4 +33,45 @@ class MainTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void task15() {
+        BigDecimal expected = BigDecimal.valueOf(89183622.6918);
+        BigDecimal actual = Main.task15();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void task21() {
+        HashMap<String, Long> expected = new HashMap<>();
+        expected.put("M-1", 5l);
+        expected.put("M-3", 3l);
+        expected.put("M-2", 4l);
+        expected.put("P-2", 2l);
+        expected.put("P-1", 7l);
+        expected.put("C-1", 4l);
+        expected.put("P-4", 1l);
+        expected.put("P-3", 3l);
+        expected.put("C-3", 9l);
+        expected.put("C-2", 11l);
+        expected.put("C-4", 1l);
+        HashMap<String, Long> actual = Main.task21();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void task22() {
+        HashMap<String, Integer> expected = new HashMap<>();
+        expected.put("ComputerScience", 18);
+        expected.put("Chemistry", 18);
+        expected.put("Mathematics", 18);
+        expected.put("Physics", 18);
+        HashMap<String, Integer> actual = Main.task22();
+
+        assertEquals(expected, actual);
+    }
+
+
 }
